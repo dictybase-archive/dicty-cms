@@ -72,7 +72,6 @@
         "no-caller": 2, // disallow use of arguments.caller or arguments.callee
         "no-div-regex": 2, // disallow division operators explicitly at beginning of regular expression (off by default)
         "no-else-return": 2, // disallow else after a return in an if (off by default)
-        "no-empty-label": 2, // disallow use of labels for anything other then loops and switches
         "no-eq-null": 2, // disallow comparisons to null without a type-checking operator (off by default)
         "no-eval": 2, // disallow use of eval()
         "no-extend-native": 2, // disallow adding to native types
@@ -169,7 +168,7 @@
         "space-unary-ops": [1, {"words": true, "nonwords": false}], // Require or disallow spaces before/after unary operators (words on by default, nonwords off by default)
         "spaced-comment": [1, "always"], // require or disallow a space immediately following the // in a line comment (off by default)
         "wrap-regex": 0, // require regex literals to be wrapped in parentheses (off by default)
-        "space-after-keywords": [1, "always"], // require a space after certain keywords (off by default)
+        "keyword-spacing": 2, // require a space after certain keywords (off by default)
         "space-before-blocks": [1, "always"], // require or disallow space before blocks (off by default)
         "space-before-function-paren": [1, {"anonymous": "always", "named": "never"}], // require or disallow space before function opening parenthesis (off by default)
         // "object-curly-spacing": [1, "never"], // require or disallow spaces inside brackets (off by default)
