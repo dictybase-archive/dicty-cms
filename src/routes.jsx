@@ -3,7 +3,7 @@ import Page from 'components/Page'
 
 const routes = (
     <Route path="/" component={ App }>
-        <Route path=":page" component={ Page } />
+        <Route path="page/:name" component={ Page } />
     </Route>
 );
 
