@@ -1,4 +1,5 @@
 import { Component } from 'react'
+import 'style/bootstrap.scss'
 
 export class Navbar extends Component {
     displayName = 'navbar component'
