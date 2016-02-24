@@ -1,7 +1,7 @@
 // Select either of prod or dev configurations
 // Development setup comes with the redux-devtools
 if (__DEBUG__) {
-      module.exports = require('./configureStore.prod')
+    module.exports = require('./configureStore.prod')
 } else {
-      module.exports = require('./configureStore.dev')
+    module.exports = require('./configureStore.dev')
 }

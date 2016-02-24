@@ -1,9 +1,9 @@
 // Connected component
-import React, {Component, PropTypes} from 'react'
+import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import * as actions from 'actions'
-import Navar from 'components/Navbar'
+import Navbar from 'components/Navbar'
 
 
 // Which part of the Redux global state does our component want to receive as props
