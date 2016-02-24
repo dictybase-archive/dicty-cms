@@ -200,7 +200,7 @@
         //
         // React specific linting rules for ESLint
         //
-        "react/display-name": 1, // Prevent missing displayName in a React component definition
+        "react/display-name": [1,{ "ignoreTranspilerName": true }], // Prevent missing displayName in a React component definition
         "react/jsx-boolean-value": [1, "never"], // Enforce boolean attributes notation is jsx
         "react/jsx-curly-spacing": [2, "always", {"allowMultiline": true}], // Enforce or disallow spaces inside of curly braces in JSX attributes
         //"react/jsx-max-props-per-line": [1, {"maximum": 2}], // Limit maximum of props on a single line in JSX
