@@ -42,7 +42,7 @@ const config = {
     'react-redux',
     'react-router',
     'redux',
-    'redux-actions',
+    'flux-standard-action',
     'react-router-redux'
   ],
 
