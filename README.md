@@ -1,31 +1,9 @@
-# dicty-editor 
+# dicty-cms 
 
-[![dependencies](https://david-dm.org/dictybase/dicty-editor.svg)](https://david-dm.org/dictybase/dicty-editor)
-[![devDependency Status](https://david-dm.org/dictybase/dicty-redux/dev-status.svg)](https://david-dm.org/dictybase/dicty-redux#info=devDependencies)
+[![dependencies](https://david-dm.org/dictybase/dicty-cms.svg)](https://david-dm.org/dictybase/dicty-cms)
+[![devDependency Status](https://david-dm.org/dictybase/dicty-cms/dev-status.svg)](https://david-dm.org/dictybase/dicty-cms#info=devDependencies)
 
-Starter kit to bootstrap  [React](https://facebook.github.io/react/) and
-[Redux](http://redux.js.org) web application projects. It is a slightly
-modified version of [davezuko's starter
-kit](https://github.com/davezuko/react-redux-starter-kit) with some
-preferential changes to develop
-applications at [dictybase](http://dictybase.org).
-
-The rest of the documentation are more or less copied from
-[davezuko's](https://github.com/davezuko/react-redux-start-kit) repository.
-
-
-> ### Want Semicolons?
-> After installing npm dependencies, open `.eslintrc`, change the `semi` rule
-> from `never` to `always`, and then run `npm run lint:fix` -- Easy as that!
-> Alternatively, use the same npm script after installing and extending your
-> preferred ESLint configuration; it's easy to customize the project's code
-> style to suit your team's needs. See, we can coexist peacefully.
-
-This starter kit is designed to get you up and running with a bunch of awesome
-new front-end technologies, all on top of a configurable, feature-rich webpack
-build system that's already setup to provide hot reloading, CSS modules with
-Sass support, unit testing, code coverage reports, bundle splitting, and a
-whole lot more.
+A  web appliction to manage dictybase static html pages
 
 Table of Contents
 -----------------
