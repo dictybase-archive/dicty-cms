@@ -1,14 +1,7 @@
 import React, { Component } from 'react'
 import 'styles/bootstrap.scss'
 
-export default class Page extends Component {
-    displayName = 'page component'
-    render() {
-        return (
-          <div className="container-fluid">
-            <div className="row">
-              <div className="col-sm-offset-1 col-sm-7">
-                <h1>
+const html = `<h1>
                         About Dicty Stock Center
                 </h1>
                 <p>
@@ -56,7 +49,16 @@ export default class Page extends Component {
                 <p>
                       For more procedural and technical information,
                   see our <a href="/StockCenter/FAQ_StockCenter.html">Stock Center FAQ</a> page.
-                </p>
+                </p>`
+
+export default class Page extends Component {
+    displayName = 'page component'
+    render() {
+        return (
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-sm-offset-1 col-sm-7">
+                  { html }
               </div>
             </div>
           </div>
