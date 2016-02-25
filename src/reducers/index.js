@@ -1,19 +1,13 @@
 // Use this to import all the reducers and then combine them
 
-/*
- *import { combineReducers } from 'redux'
- *import auth from 'reducers/auth'
- *import auth from 'reducers/user'
- *import { routeReducer } from 'react-router-redux'
- *
- *const rootReducer = combineReducers({
- *    auth,
- *    user,
- *    routing: routeReducer
- *})
- *
- *export default rootReducer
- */
+import { combineReducers } from 'redux'
+import { routerReducer } from 'react-router-redux'
+
+const rootReducer = combineReducers({
+    routing: routerReducer
+})
+
+export default rootReducer
 
 /*
  *And example of a reducer

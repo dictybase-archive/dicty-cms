@@ -20,6 +20,5 @@ export default function configureStore(initialState) {
             store.replaceReducer(require('../reducers').default)
         })
     }
-    middleware.listenForReplays(store)
     return store
 }

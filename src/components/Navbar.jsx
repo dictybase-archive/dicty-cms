@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import 'styles/bootstrap.scss'
 
-export class Navbar extends Component {
+export default class Navbar extends Component {
     displayName = 'navbar component'
     render() {
         return (

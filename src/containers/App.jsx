@@ -22,6 +22,7 @@ const mapStateToProps = (state, ownProps) => {
       *Then return an object which would be available via props to dumb components
       *   return { user: user, routeProps: ownProps }
       */
+    return { routeProps: ownProps }
 }
 
 // Which action creators does it want to receive by props
