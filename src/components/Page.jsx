@@ -1,66 +1,95 @@
 import React, { Component } from 'react'
+import {Editor, EditorState, ContentState, convertFromRaw} from 'draft-js'
 import 'styles/bootstrap.scss'
+import EditButton from 'components/EditButton'
 
-const html = `<h1>
-                        About Dicty Stock Center
-                </h1>
-                <p>
-                  In the fall of 2002 the Dicty Stock Center (DSC) opened at
-                  Columbia University in New York City as a repository for
-                  <i>Dictyostelium discoideum</i> and other Dictiosteliids under
-                  the direction of Dr. Richard Kessin, and curated by Mr. Jakob
-                  Franke. The Dicty Stock Center was relocated to Northwestern
-                  University in April of 2009. As of July 2015, nearly
-                  <b>2,000 strains</b> can be acquired from the stock center. The
-                  strains available from the stock center are in the
-                  <a href="/db/cgi-bin/dictyBase/SC/strainlist.pl">strain catalog</a>
-                  on our website. Also as of July 2015, over
-                  <b>800 plasmids</b> are available and the
-                  <a href="/db/cgi-bin/dictyBase/SC/plasmid_catalog.pl">plasmid catalog</a>.
-                  Both collections are rapidly expanding.
-                  Several strain catalogs are listed
-                  <a href="/StockCenter/StockCenter.html">here</a>. Additionally
-                  we hold other materials such as DNA libraries and antobodies,
-                  accessible <a href="/StockCenter/additional_materials.html">here</a>.
-                  Starting in August 2105, the National Institute of Health
-                  mandates that we
-                  <a href="/StockCenter/OrderInfo.html"><b>charge</b></a> for
-                  stock center materials.
-                </p>
-                <p>
-                    The collection is being built by requesting published strains
-                        and plasmids. We encourage and also periodically remind
-                        investigators to send new mutants, natural isolates, and
-                        plasmids, once they have been published. Validation of the
-                        materials is mostly done by observable phenotypes, while
-                        mutants are also tested for drug-resistance markers. Plasmids
-                        will be checked by performing one or two diagnostic restriction
-                        enzyme digests, and are stored both as DNA and as transformed
-                        bacteria at -80°C. However, a large component of the quality
-                        control program will consist of feedback from the recipients of
-                        materials. Strains are stored at two different locations in
-                        liquid nitrogen, as spores and/or as vegetative amoebae.
-                </p>
-                <hr/>
-                <p>
-                  Click <a href="/StockCenter/StockCenterHistory.html"> here </a>
-                        for a history of the Stock Center conception.
-                </p>
-                <p>
-                      For more procedural and technical information,
-                  see our <a href="/StockCenter/FAQ_StockCenter.html">Stock Center FAQ</a> page.
-                </p>`
+const about = `
+In the fall of 2002 the Dicty Stock Center (DSC) opened at Columbia University
+in New York City as a repository for Dictyostelium discoideum and other
+Dictiosteliids under the direction of Dr. Richard Kessin, and curated by Mr.
+    Jakob Franke. The Dicty Stock Center was relocated to Northwestern
+University in April of 2009. As of July 2015, nearly 2,000 strains can be
+acquired from the stock center. The strains available from the stock center are
+in the strain catalog on our website. Also as of July 2015, over 800 plasmids
+are available and the plasmid catalog. Both collections are rapidly expanding.
+    Several strain catalogs are listed here. Additionally we hold other
+materials such as DNA libraries and antobodies, accessible here. Starting in
+August 2105, the National Institute of Health mandates that we charge for stock
+    center materials.
+`
+
+const rawContent = {
+    blocks: [
+        {
+            text: 'About dicty stock center',
+            type: 'header-one'
+        },
+        {
+            text: about,
+            type: 'paragraph'
+        }
+    ],
+    entityMap: {}
+}
+
+
+const Header = (props) => <h1>{ props.block.text } </h1>
+Header.displayName = 'header block'
+const Paragraph = (props) => <p>{ props.block.text }</p>
+Paragraph.displayName = 'paragraph block'
+
+const blockRenderer = (block) => {
+    switch (block.type) {
+    case 'header-one':
+        return {
+            component: Header
+        }
+    case 'paragraph':
+        return {
+            component: Paragraph
+        }
+    default:
+        return {
+
+        }
+    }
+}
+
 
 export default class Page extends Component {
     displayName = 'page component'
+    constructor(props) {
+        super(props)
+        const blocks = convertFromRaw(rawContent)
+        this.state = {
+            editorState: EditorState.createWithContent(
+                ContentState.createFromBlockArray(blocks)
+            )
+        }
+    }
+    onEdit = () => {
+        const { editorState } = this.state
+        const { pageActions, routeProps } = this.props
+        pageActions.editPage(
+            editorState.getCurrentContent(),
+            routeProps.params.name
+        )
+    }
     render() {
+        const { editorState } = this.state
         return (
           <div className="container-fluid">
             <div className="row">
               <div className="col-sm-offset-1 col-sm-7">
-                  { html }
+                <Editor
+                  editorState={ editorState }
+                  blockRendererFn={ blockRenderer }
+                  ref="editor"
+                  readOnly
+                />
               </div>
             </div>
+            <EditButton editFn={ this.onEdit } />
           </div>
         )
     }
