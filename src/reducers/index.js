@@ -2,9 +2,11 @@
 
 import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
+import pageReducer from 'reducers/page'
 
 const rootReducer = combineReducers({
-    routing: routerReducer
+    routing: routerReducer,
+    page: pageReducer
 })
 
 export default rootReducer
