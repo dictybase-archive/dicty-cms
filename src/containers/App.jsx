@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import * as pageActionCreators from 'actions/page'
 import Navbar from 'components/Navbar'
+import 'styles/core.scss'
 
 
 // Which part of the Redux global state does our component want to receive as props

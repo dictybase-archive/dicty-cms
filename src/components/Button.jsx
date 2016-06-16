@@ -1,5 +1,4 @@
 import React from 'react'
-import 'styles/bootstrap.scss'
 const Button = (props) => {
     return (
       <div className="row top5">

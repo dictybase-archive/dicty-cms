@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {Editor, EditorState, ContentState, convertFromRaw} from 'draft-js'
-import 'styles/bootstrap.scss'
-import EditButton from 'components/EditButton'
+import Button from 'components/Button'
+// import blockRenderer from 'components/CustomBlocks'
 
 const about = `
 In the fall of 2002 the Dicty Stock Center (DSC) opened at Columbia University
@@ -25,36 +25,20 @@ const rawContent = {
             type: 'header-one'
         },
         {
+            text: '',
+            type: 'unstyled'
+        },
+        {
             text: about,
             type: 'paragraph'
+        },
+        {
+            text: '',
+            type: 'unstyled'
         }
     ],
     entityMap: {}
 }
-
-
-const Header = (props) => <h1>{ props.block.text } </h1>
-Header.displayName = 'header block'
-const Paragraph = (props) => <p>{ props.block.text }</p>
-Paragraph.displayName = 'paragraph block'
-
-const blockRenderer = (block) => {
-    switch (block.type) {
-    case 'header-one':
-        return {
-            component: Header
-        }
-    case 'paragraph':
-        return {
-            component: Paragraph
-        }
-    default:
-        return {
-
-        }
-    }
-}
-
 
 export default class Page extends Component {
     displayName = 'page component'
@@ -67,7 +51,7 @@ export default class Page extends Component {
             )
         }
     }
-    onEdit = () => {
+    onClick = () => {
         const { editorState } = this.state
         const { pageActions, routeProps } = this.props
         pageActions.editPage(
@@ -83,13 +67,15 @@ export default class Page extends Component {
               <div className="col-sm-offset-1 col-sm-7">
                 <Editor
                   editorState={ editorState }
-                  blockRendererFn={ blockRenderer }
                   ref="editor"
                   readOnly
                 />
               </div>
             </div>
-            <EditButton editFn={ this.onEdit } />
+            <Button
+              clickFn={ this.onClick }
+              label="Edit me"
+            />
           </div>
         )
     }

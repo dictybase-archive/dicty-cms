@@ -152,32 +152,34 @@ webpackConfig.module.loaders.push({
   ]
 })
 
-// Don't treat global SCSS as modules
-webpackConfig.module.loaders.push({
-  test: /\.scss$/,
-  exclude: /src/,
-  loaders: [
-    'style',
-    'css?sourceMap',
-    'postcss',
-    'sass?sourceMap'
-  ]
-})
+if (cssLoader != 'css?sourceMap') {
+    webpackConfig.module.loaders.push({
+      test: /\.scss$/,
+      exclude: /src/,
+      loaders: [
+        'style',
+        'css?sourceMap',
+        'postcss',
+        'sass?sourceMap'
+      ]
+    })
 
-// Don't treat global, third-party CSS as modules
-webpackConfig.module.loaders.push({
-  test: /\.css$/,
-  exclude: /src/,
-  loaders: [
-    'style',
-    'css?sourceMap',
-    'postcss'
-  ]
-})
+    // Don't treat global, third-party CSS as modules
+    webpackConfig.module.loaders.push({
+      test: /\.css$/,
+      exclude: /src/,
+      loaders: [
+        'style',
+        'css?sourceMap',
+        'postcss'
+      ]
+    })
+}
 
 webpackConfig.sassLoader = {
   includePaths: paths.client('styles')
 }
+
 
 webpackConfig.postcss = [
   cssnano({
@@ -200,12 +202,13 @@ webpackConfig.module.loaders.push(
   { test: /\.woff(\?.*)?$/,  loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/font-woff' },
   { test: /\.woff2(\?.*)?$/, loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/font-woff2' },
   { test: /\.otf(\?.*)?$/,   loader: 'file?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=font/opentype' },
-  { test: /\.ttf(\?.*)?$/,   loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/octet-stream' },
+  { test: /\.ttf(\?.*)?$/,   loader: 'file?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=application/octet-stream' },
   { test: /\.eot(\?.*)?$/,   loader: 'file?prefix=fonts/&name=[path][name].[ext]' },
-  { test: /\.svg(\?.*)?$/,   loader: 'url?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=image/svg+xml' },
+  { test: /\.svg(\?.*)?$/,   loader: 'file?prefix=fonts/&name=[path][name].[ext]&limit=10000&mimetype=image/svg+xml' },
   { test: /\.(png|jpg)$/,    loader: 'url?limit=8192' }
 )
 /* eslint-enable */
+
 
 // ------------------------------------
 // Finalize Configuration

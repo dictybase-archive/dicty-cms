@@ -1,0 +1,40 @@
+.toolbar-nav {
+  border: medium none;
+  border-radius: 50px;
+}
+
+.toolbar-nav .toolbar-item {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.toolbar-nav .toolbar-item:first-child {
+    padding-left: 6px;
+}
+
+.toolbar-nav .toolbar-item:last-child {
+    padding-right: 6px;
+}
+
+.toolbar-nav .toolbar-item.active {
+    background-color: #2f2f2f;
+}
+
+.toolbar-nav .toolbar-item.hover {
+    background-color: #2f2f2f;
+}
+
+.toolbar-nav .toolbar-item .toolbar-button {
+    background-color: transparent;
+    border: 0;
+    color: white;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: block;
+    font-size: 14px;
+    line-height: 1.33;
+    margin: 0;
+    padding: 15px;
+    text-decoration: none;
+}

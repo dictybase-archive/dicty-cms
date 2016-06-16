@@ -7,9 +7,8 @@ import React from 'react'
 const routes = (
   <Route path="/" component={ App }>
     <IndexRedirect to="page/stockcenter" />
-    <Route path="page/:name" component={ Page }>
-      <Route path="edit" component={ EditPage } />
-    </Route>
+    <Route path="page/:name" component={ Page } />
+    <Route path="page/:name/edit" component={ EditPage } />
   </Route>
 )
 
